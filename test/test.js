@@ -151,8 +151,8 @@
 		ok(!map.has(key3), "'has' returns false after 'clear' - 3");
 		ok(!map.has(key5), "'has' returns false after 'clear' - 4");
 	});
-	
-	test("Set API", 25, function () {
+
+	test("Set API", 28, function () {
 		var i = 0,
 			set = blitz.Set(),
 			item1 = "hi",
@@ -225,10 +225,20 @@
 					ok(false, "'forEach' called too many times");
 			}
 		});
-		
+
 		set.clear();
-		
-		equal(set.size, 0, "Set 'size' is correct after clear");		
-		
+
+		equal(set.size, 0, "Set 'size' is correct after clear");
+
+		set.add('A');
+		set.add('B');
+		set.add('C');
+		set.delete('B');
+		ok(!set.has('B'));
+		ok(set.has('A'));
+        set.delete('A');
+        set.delete('C');
+
+		equal(set.size, 0, "Set 'size' is correct after clear");
 	});
 }());
