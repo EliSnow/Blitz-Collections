@@ -242,7 +242,7 @@ if (typeof blitz == "undefined") {
 				i = map.get(item);
 			if (i >= 0) {
 				map.delete(item);
-				wm.values.splice(i, 1);
+				wm.values.splice(wm.values.indexOf(item), 1);
 				return true;
 			}
 			return false;
